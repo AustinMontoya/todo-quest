@@ -1,0 +1,33 @@
+todos:
+  image: grrizzly/todos-backend-node-server:latest
+  ports:
+    - "3000:3000"
+  links:
+    - todosDb
+    - players
+  command: node /opt/app/index.js
+  environment:
+    - TODOS_COUCH_URL=http://todosDb:5984
+    - TODOS_URL_BASE=http://${TODOS_SERVICE_IP}:3000
+    - TODOS_PLAYER_SERVICE_URL=http://players:4000
+todosDb:
+  image: grrizzly/todos-backend-couch:latest
+  expose:
+    - "5984"
+players:
+  image: grrizzly/todos-player-service:latest
+  ports:
+    - "4000:4000"
+  expose:
+    - "1337"
+  links:
+    - playersDb
+  command: mix run --no-halt
+  environment:
+    - TODOS_PLAYER_SERVICE_COUCH_URL=http://playersDb:5984
+    - TODOS_PLAYER_SERVICE_DATABASE_NAME=todos
+    - MIX_ENV=prod
+playersDb:
+  image: grrizzly/todos-backend-couch:latest
+  expose:
+    - "5984"
