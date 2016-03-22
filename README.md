@@ -21,7 +21,7 @@ development, see the Readme for each service's repository.
 
 1. Make sure [Docker](https://docker.com) and [docker-compose](https://docs.docker.com/compose/) are installed and running
 1. `git clone https://github.com/grrizzly/todo-quest.git && cd todo-quest`
-1. `docker-compose up`
+1. `TODOS_SERVICE_IP=$(docker-machine ip <your-env-name>) docker-compose up`
 
 
 ## Tests
