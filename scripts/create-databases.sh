@@ -1,3 +1,5 @@
+#/bin/bash
+
 docker_host_ip=$(docker-machine ip $DOCKER_MACHINE_NAME)
 include_data=noway
 

@@ -1,3 +1,5 @@
+#/bin/bash
+
 set -e
 docker_host_ip=$(docker-machine ip $DOCKER_MACHINE_NAME)
 
