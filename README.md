@@ -21,8 +21,12 @@ development, see the Readme for each service's repository.
 
 1. Make sure [Docker](https://docker.com) and [docker-compose](https://docs.docker.com/compose/) are installed and running
 1. `git clone https://github.com/grrizzly/todo-quest.git && cd todo-quest`
-1. `TODOS_SERVICE_IP=$(docker-machine ip <your-env-name>) docker-compose up`
+1. `scripts/start.sh`
+1. Open a new shell in the same directory and create some databases:
+1. `scripts/create-databases.sh -d`
 
+This should return a new player ID and todo urls. You can verify everything is working
+by visiting one of the returned todo urls.
 
 ## Tests
 
